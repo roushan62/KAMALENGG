@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Scaffolding Services, Material on Rent, Manpower Supply, Industrial Support – Kamal Engineering, Surat."/>
+  <title>Services | Kamal Engineering</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .service-detail {
+      background: var(--gradient-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 32px;
+      transition: var(--transition);
+    }
+    .service-detail:hover { border-color: var(--border-accent); }
+    .service-detail.reverse { direction: rtl; }
+    .service-detail.reverse > * { direction: ltr; }
+    .service-detail-icon { font-size: 6rem; text-align: center; line-height: 1; }
+    .service-detail h3 {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 800;
+      letter-spacing: 1px; margin-bottom: 16px;
+    }
+    .service-detail p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px; }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .feature-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.9rem; color: var(--text-secondary);
+    }
+    .feature-list li::before {
+      content: '✓';
+      width: 22px; height: 22px;
+      background: rgba(232,130,12,0.15);
+      border: 1px solid rgba(232,130,12,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--primary);
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .service-detail { grid-template-columns: 1fr; padding: 28px; }
+      .service-detail.reverse { direction: ltr; }
+    }
+  </style>
+</head>
+<body>
+<div id="loader"><div class="loader-logo">KAMAL<span style="color:#fff;opacity:0.4"> ENGINEERING</span></div><div class="loader-bar"><div class="loader-bar-fill"></div></div></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-icon">KE</div><div class="nav-logo-text"><span class="nav-logo-main">KAMAL</span><span class="nav-logo-sub">Engineering</span></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<nav class="mobile-nav" id="mobileNav"><ul>
+  <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact Us</a></li>
+</ul></nav>
+
+<section class="page-hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Services</span></div>
+    <div class="section-tag">What We Offer</div>
+    <h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Our Services</h1>
+    <p class="section-subtitle">Comprehensive scaffolding and industrial solutions for every project scale and complexity.</p>
+  </div>
+</section>
+
+<section class="section" style="background:var(--secondary);" id="scaffolding">
+  <div class="section-inner">
+    <div class="text-center reveal" style="margin-bottom:56px;">
+      <div class="section-tag">Core Services</div>
+      <h2 class="section-title">Complete Scaffolding Solutions</h2>
+      <p class="section-subtitle">From design to dismantling – we handle every aspect of your scaffolding requirements.</p>
+    </div>
+
+    <div class="service-detail reveal">
+      <div class="service-detail-icon">🏗️</div>
+      <div>
+        <div class="section-tag">Service 01</div>
+        <h3>Scaffolding Services</h3>
+        <p>Kamal Engineering provides complete scaffolding solutions for industrial, commercial, and residential projects. Our certified engineers design and erect safe, stable scaffolding structures that meet all regulatory requirements.</p>
+        <ul class="feature-list">
+          <li>Conventional / Tube & Clamp Scaffolding</li>
+          <li>Cuplock / Ringlock System Scaffolding</li>
+          <li>Mobile Tower Scaffolding</li>
+          <li>Suspended / Hanging Scaffolding</li>
+          <li>Cantilever Scaffolding</li>
+          <li>Staircase Tower Scaffolding</li>
+          <li>Engineered Load-Bearing Scaffolding</li>
+          <li>Safety inspections and load calculations</li>
+        </ul>
+        <a href="contact.html" class="btn-primary">Request a Quote</a>
+      </div>
+    </div>
+
+    <div class="service-detail reverse reveal" id="rental">
+      <div class="service-detail-icon">🔧</div>
+      <div>
+        <div class="section-tag">Service 02</div>
+        <h3>Scaffolding Material on Rent</h3>
+        <p>Need material without erection services? We offer premium scaffolding materials on rent at competitive rates. All materials are regularly inspected and maintained to the highest standards.</p>
+        <ul class="feature-list">
+          <li>Scaffolding Pipes (IS:1161 Grade)</li>
+          <li>Cuplock Standards, Ledgers & Transoms</li>
+          <li>Steel Planks, Platforms & Boards</li>
+          <li>Swivel & Fixed Clamps</li>
+          <li>Base Plates & Adjustable Jacks</li>
+          <li>Safety Nets & Toe Boards</li>
+          <li>Flexible daily, weekly & monthly rates</li>
+          <li>Free delivery within Surat city</li>
+        </ul>
+        <a href="contact.html" class="btn-primary">Get Rental Quote</a>
+      </div>
+    </div>
+
+    <div class="service-detail reveal" id="manpower">
+      <div class="service-detail-icon">👷</div>
+      <div>
+        <div class="section-tag">Service 03</div>
+        <h3>Manpower Supply</h3>
+        <p>Reliable, trained, and verified workforce for all your industrial and construction needs. We supply both skilled and unskilled labor with full statutory compliance including PF, ESIC, and workmen's compensation.</p>
+        <ul class="feature-list">
+          <li>Scaffolders & Riggers (Skilled)</li>
+          <li>Welders & Fitters (Skilled)</li>
+          <li>Painters & Blasters (Skilled)</li>
+          <li>Rope Access Technicians (IRATA)</li>
+          <li>General Labour (Unskilled)</li>
+          <li>Contract & Permanent Staffing</li>
+          <li>Background-verified workforce</li>
+          <li>Safety-trained & PPE-equipped</li>
+        </ul>
+        <a href="contact.html" class="btn-primary">Request Manpower</a>
+      </div>
+    </div>
+
+    <div class="service-detail reverse reveal" id="industrial">
+      <div class="service-detail-icon">🏭</div>
+      <div>
+        <div class="section-tag">Service 04</div>
+        <h3>Industrial Support Services</h3>
+        <p>Beyond scaffolding, we provide comprehensive industrial maintenance and support services that help keep your plant running safely and efficiently.</p>
+        <ul class="feature-list">
+          <li>Plant Shutdown & Turnaround Support</li>
+          <li>Industrial Painting & Surface Coating</li>
+          <li>Sandblasting & Abrasive Blasting</li>
+          <li>Rope Access Services</li>
+          <li>Insulation & Cladding Work</li>
+          <li>Structural Maintenance</li>
+          <li>Chimney & Tank Repair</li>
+          <li>Fireproofing Services</li>
+        </ul>
+        <a href="contact.html" class="btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-dark);">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <div class="section-tag">Industries We Serve</div>
+      <h2 class="section-title">Sectors We Cater To</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;margin-top:48px;">
+      <div class="feat-vis-card reveal"><div class="feat-vis-icon">⚗️</div><div class="feat-vis-label" style="font-size:0.9rem;">Petrochemical</div></div>
+      <div class="feat-vis-card reveal" style="transition-delay:0.1s"><div class="feat-vis-icon">⚡</div><div class="feat-vis-label" style="font-size:0.9rem;">Power Plants</div></div>
+      <div class="feat-vis-card reveal" style="transition-delay:0.2s"><div class="feat-vis-icon">🏗️</div><div class="feat-vis-label" style="font-size:0.9rem;">Construction</div></div>
+      <div class="feat-vis-card reveal" style="transition-delay:0.3s"><div class="feat-vis-icon">🚢</div><div class="feat-vis-label" style="font-size:0.9rem;">Shipbuilding</div></div>
+      <div class="feat-vis-card reveal" style="transition-delay:0.4s"><div class="feat-vis-icon">🔬</div><div class="feat-vis-label" style="font-size:0.9rem;">Pharmaceuticals</div></div>
+      <div class="feat-vis-card reveal" style="transition-delay:0.5s"><div class="feat-vis-icon">🏭</div><div class="feat-vis-label" style="font-size:0.9rem;">Manufacturing</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <h2 class="cta-title">Ready to Discuss Your Project?</h2>
+    <p class="cta-sub">Our team of experts will provide a detailed proposal tailored to your specific requirements.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-primary">Get Free Quote</a>
+      <a href="tel:+919876543210" class="btn-secondary">📞 Call: +91 98765 43210</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><div class="nav-logo-icon">KE</div><div class="nav-logo-text"><span class="nav-logo-main">KAMAL</span><span class="nav-logo-sub">Engineering</span></div></a>
+        <p>Premier scaffolding services, material rental, and manpower supply for industrial and construction projects across Gujarat since 2010.</p>
+        <div class="footer-social"><a href="#" class="social-btn">f</a><a href="#" class="social-btn">📷</a><a href="#" class="social-btn">in</a><a href="https://wa.me/919876543210" class="social-btn">💬</a></div>
+      </div>
+      <div><div class="footer-heading">Quick Links</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><div class="footer-heading">Services</div><ul class="footer-links"><li><a href="#scaffolding">Scaffolding Services</a></li><li><a href="#rental">Material on Rent</a></li><li><a href="#manpower">Manpower Supply</a></li><li><a href="#industrial">Industrial Support</a></li></ul></div>
+      <div><div class="footer-heading">Contact Info</div><div class="footer-contact-item"><div class="footer-contact-icon">📍</div><div class="footer-contact-text"><strong>Address</strong>Shop No. 01, Near Maruti Plaza,<br>Surat – 395003, Gujarat</div></div><div class="footer-contact-item"><div class="footer-contact-icon">📞</div><div class="footer-contact-text"><strong>Phone</strong><a href="tel:+919876543210" style="color:inherit;text-decoration:none;">+91 98765 43210</a></div></div><div class="footer-contact-item"><div class="footer-contact-icon">✉️</div><div class="footer-contact-text"><strong>Email</strong><a href="mailto:info@kamalengineering.in" style="color:inherit;text-decoration:none;">info@kamalengineering.in</a></div></div></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2024 <span>Kamal Engineering</span>. All Rights Reserved.</div><div class="footer-copy">Designed with ❤️ for Industrial Excellence</div></div>
+  </div>
+</footer>
+<a href="https://wa.me/919876543210?text=Hello%2C%20I%20need%20scaffolding%20services." class="whatsapp-float" target="_blank">💬</a>
+<button class="scroll-top">↑</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

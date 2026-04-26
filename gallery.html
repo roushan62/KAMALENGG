@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Gallery – View Kamal Engineering's scaffolding projects and site photos."/>
+  <title>Gallery | Kamal Engineering</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .gallery-grid-masonry {
+      columns: 4;
+      column-gap: 16px;
+      margin-top: 56px;
+    }
+    @media (max-width: 1024px) { .gallery-grid-masonry { columns: 3; } }
+    @media (max-width: 768px) { .gallery-grid-masonry { columns: 2; } }
+    @media (max-width: 480px) { .gallery-grid-masonry { columns: 1; } }
+    .gallery-masonry-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid var(--border-glass);
+      transition: var(--transition);
+    }
+    .gallery-masonry-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: var(--border-accent); }
+    .gmi-inner {
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      position: relative;
+    }
+    .gmi-inner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(255,255,255,0.02) 12px, rgba(255,255,255,0.02) 13px);
+    }
+    .gmi-h1 { height: 200px; }
+    .gmi-h2 { height: 280px; }
+    .gmi-h3 { height: 160px; }
+    .gmi-h4 { height: 240px; }
+    .gmi-overlay {
+      position: absolute; inset: 0;
+      background: rgba(232,130,12,0.15);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      opacity: 0; transition: var(--transition);
+      gap: 8px;
+    }
+    .gallery-masonry-item:hover .gmi-overlay { opacity: 1; }
+    .gmi-title {
+      font-family: var(--font-heading);
+      font-size: 0.9rem; font-weight: 700;
+      color: white; letter-spacing: 1px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      padding: 0 16px; text-align: center;
+    }
+
+    /* LIGHTBOX */
+    #lb {
+      position: fixed; inset: 0; z-index: 9990;
+      background: rgba(0,0,0,0.95);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    #lb.open { opacity: 1; pointer-events: all; }
+    .lb-box {
+      max-width: 700px; width: 90%;
+      text-align: center;
+    }
+    .lb-icon { font-size: 10rem; margin-bottom: 24px; filter: drop-shadow(0 0 40px rgba(232,130,12,0.4)); }
+    .lb-title { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--primary); letter-spacing: 3px; }
+    .lb-close {
+      position: absolute; top: 24px; right: 24px;
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.2rem;
+      cursor: pointer; transition: var(--transition);
+    }
+    .lb-close:hover { background: rgba(232,130,12,0.2); border-color: var(--primary); }
+    .lb-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.2rem;
+      cursor: pointer; transition: var(--transition);
+    }
+    .lb-nav:hover { background: rgba(232,130,12,0.2); }
+    .lb-prev { left: 24px; }
+    .lb-next { right: 24px; }
+  </style>
+</head>
+<body>
+<div id="loader"><div class="loader-logo">KAMAL<span style="color:#fff;opacity:0.4"> ENGINEERING</span></div><div class="loader-bar"><div class="loader-bar-fill"></div></div></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-icon">KE</div><div class="nav-logo-text"><span class="nav-logo-main">KAMAL</span><span class="nav-logo-sub">Engineering</span></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="gallery.html" class="active">Gallery</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<nav class="mobile-nav" id="mobileNav"><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact Us</a></li></ul></nav>
+
+<section class="page-hero">
+  <div class="hero-bg-pattern"></div><div class="hero-glow"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Gallery</span></div>
+    <div class="section-tag">Visual Portfolio</div>
+    <h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Project Gallery</h1>
+    <p class="section-subtitle">Browse through our completed projects and site photos showcasing our work quality and safety standards.</p>
+  </div>
+</section>
+
+<section class="section" style="background:var(--secondary);">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <div class="section-tag">Our Work in Pictures</div>
+      <h2 class="section-title">Site Photography</h2>
+      <p class="section-subtitle">Click on any image to view in fullscreen. Every photo tells a story of precision and safety.</p>
+    </div>
+
+    <div class="gallery-grid-masonry" id="galleryGrid">
+      <div class="gallery-masonry-item" data-icon="🏗️" data-title="Refinery Scaffolding – IOCL Koyali">
+        <div class="gmi-inner gmi-h2"><span class="gi-icon">🏗️</span><div class="gmi-overlay"><div class="gmi-title">Refinery Scaffolding – IOCL Koyali</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+      <div class="gallery-masonry-item" data-icon="🏭" data-title="Power Plant – GSECL Ukai">
+        <div class="gmi-inner gmi-h3"><span class="gi-icon">🏭</span><div class="gmi-overlay"><div class="gmi-title">Power Plant – GSECL Ukai</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+      <div class="gallery-masonry-item" data-icon="⚡" data-title="Industrial Maintenance">
+        <div class="gmi-inner gmi-h4"><span class="gi-icon">⚡</span><div class="gmi-overlay"><div class="gmi-title">Industrial Maintenance</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+      <div class="gallery-masonry-item" data-icon="💎" data-title="Diamond Bourse – Facade Scaffolding">
+        <div class="gmi-inner gmi-h1"><span class="gi-icon">💎</span><div class="gmi-overlay"><div class="gmi-title">Diamond Bourse – Facade</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+      <div class="gallery-masonry-item" data-icon="🔧" data-title="Scaffolding Material Yard">
+        <div class="gmi-inner gmi-h3"><span class="gi-icon">🔧</span><div class="gmi-overlay"><div class="gmi-title">Scaffolding Material Yard</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+      <div class="gallery-masonry-item" data-icon="👷" data-title="Skilled Workers – Site Operations">
+        <div class="gmi-inner gmi-h2"><span class="gi-icon">👷</span><div class="gmi-overlay"><div class="gmi-title">Site Operations</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+      <div class="gallery-masonry-item" data-icon="🏨" data-title="Hotel Facade – Surat">
+        <div class="gmi-inner gmi-h4"><span class="gi-icon">🏨</span><div class="gmi-overlay"><div class="gmi-title">Hotel Facade – Surat</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+      <div class="gallery-masonry-item" data-icon="🛢️" data-title="LNG Terminal – Dahej">
+        <div class="gmi-inner gmi-h1"><span class="gi-icon">🛢️</span><div class="gmi-overlay"><div class="gmi-title">LNG Terminal – Dahej</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+      <div class="gallery-masonry-item" data-icon="🔬" data-title="Pharma Plant – Bharuch">
+        <div class="gmi-inner gmi-h3"><span class="gi-icon">🔬</span><div class="gmi-overlay"><div class="gmi-title">Pharma Plant – Bharuch</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+      <div class="gallery-masonry-item" data-icon="🏗️" data-title="Cuplock System Scaffolding">
+        <div class="gmi-inner gmi-h2"><span class="gi-icon">🏗️</span><div class="gmi-overlay"><div class="gmi-title">Cuplock System Scaffolding</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+      <div class="gallery-masonry-item" data-icon="🧱" data-title="Commercial Building – Surat">
+        <div class="gmi-inner gmi-h4"><span class="gi-icon">🧱</span><div class="gmi-overlay"><div class="gmi-title">Commercial Building – Surat</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+      <div class="gallery-masonry-item" data-icon="🎯" data-title="Safety Inspection Briefing">
+        <div class="gmi-inner gmi-h1"><span class="gi-icon">🎯</span><div class="gmi-overlay"><div class="gmi-title">Safety Inspection Briefing</div><div style="font-size:1.5rem;">🔍</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lb">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev">‹</button>
+  <div class="lb-box">
+    <div class="lb-icon" id="lbIcon">🏗️</div>
+    <div class="lb-title" id="lbTitle">Project Photo</div>
+  </div>
+  <button class="lb-nav lb-next" id="lbNext">›</button>
+</div>
+
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <h2 class="cta-title">Want to See Your Project Here?</h2>
+    <p class="cta-sub">Contact us today and let's start building your project together.</p>
+    <div class="cta-btns"><a href="contact.html" class="btn-primary">Get Started</a><a href="projects.html" class="btn-secondary">View Projects</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo"><div class="nav-logo-icon">KE</div><div class="nav-logo-text"><span class="nav-logo-main">KAMAL</span><span class="nav-logo-sub">Engineering</span></div></a><p>Premier scaffolding services, material rental, and manpower supply for industrial and construction projects across Gujarat since 2010.</p><div class="footer-social"><a href="#" class="social-btn">f</a><a href="#" class="social-btn">📷</a><a href="#" class="social-btn">in</a><a href="https://wa.me/919876543210" class="social-btn">💬</a></div></div>
+      <div><div class="footer-heading">Quick Links</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><div class="footer-heading">Services</div><ul class="footer-links"><li><a href="services.html#scaffolding">Scaffolding Services</a></li><li><a href="services.html#rental">Material on Rent</a></li><li><a href="services.html#manpower">Manpower Supply</a></li><li><a href="services.html#industrial">Industrial Support</a></li></ul></div>
+      <div><div class="footer-heading">Contact Info</div><div class="footer-contact-item"><div class="footer-contact-icon">📍</div><div class="footer-contact-text"><strong>Address</strong>Shop No. 01, Near Maruti Plaza,<br>Surat – 395003, Gujarat</div></div><div class="footer-contact-item"><div class="footer-contact-icon">📞</div><div class="footer-contact-text"><strong>Phone</strong><a href="tel:+919876543210" style="color:inherit;text-decoration:none;">+91 98765 43210</a></div></div></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2024 <span>Kamal Engineering</span>. All Rights Reserved.</div><div class="footer-copy">Designed with ❤️ for Industrial Excellence</div></div>
+  </div>
+</footer>
+<a href="https://wa.me/919876543210?text=Hello%2C%20I%20need%20scaffolding%20services." class="whatsapp-float" target="_blank">💬</a>
+<button class="scroll-top">↑</button>
+<script src="assets/js/main.js"></script>
+<script>
+  const items = Array.from(document.querySelectorAll('.gallery-masonry-item'));
+  let current = 0;
+  const lb = document.getElementById('lb');
+  const lbIcon = document.getElementById('lbIcon');
+  const lbTitle = document.getElementById('lbTitle');
+
+  function openLb(idx) {
+    current = idx;
+    lbIcon.textContent = items[idx].dataset.icon;
+    lbTitle.textContent = items[idx].dataset.title;
+    lb.classList.add('open');
+  }
+  items.forEach((item, idx) => item.addEventListener('click', () => openLb(idx)));
+  document.getElementById('lbClose').addEventListener('click', () => lb.classList.remove('open'));
+  lb.addEventListener('click', e => { if(e.target === lb) lb.classList.remove('open'); });
+  document.getElementById('lbPrev').addEventListener('click', () => { current = (current - 1 + items.length) % items.length; openLb(current); });
+  document.getElementById('lbNext').addEventListener('click', () => { current = (current + 1) % items.length; openLb(current); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') lb.classList.remove('open');
+    if (e.key === 'ArrowLeft') { current = (current - 1 + items.length) % items.length; openLb(current); }
+    if (e.key === 'ArrowRight') { current = (current + 1) % items.length; openLb(current); }
+  });
+</script>
+</body>
+</html>
